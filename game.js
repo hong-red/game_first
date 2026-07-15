@@ -5,16 +5,16 @@
 
 // ===== 游戏数据 =====
 const SEASONS = {
-  spring: { name: '春季', icon: '🌸', color: '#ffb7c5', bg: '../.uploads/386f7216-b23e-4bb4-8d05-8b28ffb0b1d5_春季背景图.png' },
-  summer: { name: '夏季', icon: '☀️', color: '#7fdbda', bg: '../.uploads/bc30e759-542c-40cd-a653-74ee7ad280b2_夏季背景图.png' },
-  autumn: { name: '秋季', icon: '🍂', color: '#f4a261', bg: '../.uploads/e0018974-9664-4694-b237-ddd431d7f9d8_秋季背景图.png' },
-  winter: { name: '冬季', icon: '❄️', color: '#a8d8ea', bg: '../.uploads/c8911682-29e7-41c7-8ade-c8d9fe84e234_冬季背景图.png' }
+  spring: { name: '春季', icon: '🌸', color: '#ffb7c5', bg: '.uploads/386f7216-b23e-4bb4-8d05-8b28ffb0b1d5_春季背景图.png' },
+  summer: { name: '夏季', icon: '☀️', color: '#7fdbda', bg: '.uploads/bc30e759-542c-40cd-a653-74ee7ad280b2_夏季背景图.png' },
+  autumn: { name: '秋季', icon: '🍂', color: '#f4a261', bg: '.uploads/e0018974-9664-4694-b237-ddd431d7f9d8_秋季背景图.png' },
+  winter: { name: '冬季', icon: '❄️', color: '#a8d8ea', bg: '.uploads/c8911682-29e7-41c7-8ade-c8d9fe84e234_冬季背景图.png' }
 };
 
 const SHOPS = [
   {
     id: 'icecream', name: '冰淇淋店', icon: '🍦', owner: '小雪', avatar: '👩‍🍳',
-    bg: '../.uploads/17315fe8-216e-463b-b522-c47ee39c2c29_冰淇淋店背景图.png',
+    bg: '.uploads/17315fe8-216e-463b-b522-c47ee39c2c29_冰淇淋店背景图.png',
     desc: '甜蜜清凉的冰淇淋小店',
     items: ['香草冰淇淋', '草莓甜筒', '抹茶芭菲'],
     pos: { left: '18%', top: '28%' },
@@ -32,7 +32,7 @@ const SHOPS = [
   },
   {
     id: 'colddrink', name: '冷饮店', icon: '🥤', owner: '阿凉', avatar: '🧑‍🌾',
-    bg: '../.uploads/87dfef34-6d53-4c53-961a-0c6440f62c3c_冷饮店背景图.png',
+    bg: '.uploads/87dfef34-6d53-4c53-961a-0c6440f62c3c_冷饮店背景图.png',
     desc: '清爽解暑的饮品驿站',
     items: ['柠檬汽水', '珍珠奶茶', '西瓜冰沙'],
     pos: { left: '42%', top: '18%' },
@@ -51,7 +51,7 @@ const SHOPS = [
   },
   {
     id: 'bakery', name: '面包房', icon: '🍞', owner: '麦叔', avatar: '👨‍🍳',
-    bg: '../.uploads/d3622ca4-60d3-4fe2-8efb-b2e011a0f9a6_面包房背景图.png',
+    bg: '.uploads/d3622ca4-60d3-4fe2-8efb-b2e011a0f9a6_面包房背景图.png',
     desc: '香喷喷的现烤面包',
     items: ['牛角面包', '法棍', '草莓蛋糕'],
     pos: { left: '68%', top: '25%' },
@@ -69,7 +69,7 @@ const SHOPS = [
   },
   {
     id: 'flower', name: '花店', icon: '🌸', owner: '花姐', avatar: '👩‍🌾',
-    bg: '../.uploads/bae9c4b5-80e0-42c9-bd97-e4a087c082ff_花店背景图.png',
+    bg: '.uploads/bae9c4b5-80e0-42c9-bd97-e4a087c082ff_花店背景图.png',
     desc: '芬芳四溢的花卉世界',
     items: ['玫瑰花束', '向日葵', '满天星'],
     pos: { left: '12%', top: '55%' },
@@ -87,7 +87,7 @@ const SHOPS = [
   },
   {
     id: 'bookstore', name: '书店', icon: '📚', owner: '墨先生', avatar: '👨‍🏫',
-    bg: '../.uploads/d27472ff-6f87-4140-b17a-663f89c157e6_书店背景图.png',
+    bg: '.uploads/d27472ff-6f87-4140-b17a-663f89c157e6_书店背景图.png',
     desc: '安静温暖的阅读角落',
     items: ['散文集', '推理小说', '绘本'],
     pos: { left: '38%', top: '50%' },
@@ -105,7 +105,7 @@ const SHOPS = [
   },
   {
     id: 'artstudio', name: '画室', icon: '🎨', owner: '林画家', avatar: '👩‍🎨',
-    bg: '../.uploads/b50fe241-53ef-4926-8774-e5fc04956448_画室背景图.png',
+    bg: '.uploads/b50fe241-53ef-4926-8774-e5fc04956448_画室背景图.png',
     desc: '色彩斑斓的创作天地',
     items: ['风景画', '肖像画', '水彩明信片'],
     pos: { left: '62%', top: '52%' },
@@ -123,7 +123,7 @@ const SHOPS = [
   },
   {
     id: 'tavern', name: '小酒馆', icon: '🍺', owner: '老陈', avatar: '👨‍🦳',
-    bg: '../.uploads/79ff8b0d-2bcd-4d32-a4bf-6e86e08f05cd_小酒馆背景图.png',
+    bg: '.uploads/79ff8b0d-2bcd-4d32-a4bf-6e86e08f05cd_小酒馆背景图.png',
     desc: '温馨放松的夜晚去处',
     items: ['精酿啤酒', '果酒', '小食拼盘'],
     pos: { left: '85%', top: '40%' },
@@ -141,7 +141,7 @@ const SHOPS = [
   },
   {
     id: 'laundry', name: '洗衣店', icon: '👕', owner: '阿洁', avatar: '👩‍🔧',
-    bg: '../.uploads/3c46e001-8a17-453c-931d-745033668ca4_洗衣店背景图.png',
+    bg: '.uploads/3c46e001-8a17-453c-931d-745033668ca4_洗衣店背景图.png',
     desc: '干净整洁的洗衣服务',
     items: ['普通洗护', '精细洗护', '熨烫服务'],
     pos: { left: '8%', top: '78%' },
@@ -159,7 +159,7 @@ const SHOPS = [
   },
   {
     id: 'pet', name: '宠物美容店', icon: '🐕', owner: '小喵', avatar: '👩‍⚕️',
-    bg: '../.uploads/a6235c7e-5bea-4db4-b0a2-733855d57283_宠物美容店背景图.png',
+    bg: '.uploads/a6235c7e-5bea-4db4-b0a2-733855d57283_宠物美容店背景图.png',
     desc: '萌宠变美的秘密基地',
     items: ['洗澡美容', '毛发修剪', '宠物SPA'],
     pos: { left: '35%', top: '78%' },
@@ -177,7 +177,7 @@ const SHOPS = [
   },
   {
     id: 'vintage', name: '旧物杂货店', icon: '📻', owner: '古爷', avatar: '👴',
-    bg: '../.uploads/4f052b4b-eb0a-41aa-be88-3cded59b4463_旧物杂货店背景图.png',
+    bg: '.uploads/4f052b4b-eb0a-41aa-be88-3cded59b4463_旧物杂货店背景图.png',
     desc: '装满回忆的老物件',
     items: ['复古唱片', '老相机', '手工饰品'],
     pos: { left: '65%', top: '78%' },
