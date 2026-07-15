@@ -1,0 +1,390 @@
+/* ===== 基础重置与变量 ===== */
+:root {
+  --spring: #ffb7c5;
+  --summer: #7fdbda;
+  --autumn: #f4a261;
+  --winter: #a8d8ea;
+  --bg: #fff8f0;
+  --text: #4a4036;
+  --card: rgba(255,255,255,0.92);
+  --shadow: 0 4px 20px rgba(0,0,0,0.12);
+  --radius: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.hidden { display: none !important; }
+
+/* ===== 屏幕切换 ===== */
+.screen {
+  position: fixed; inset: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.screen.active { opacity: 1; pointer-events: auto; }
+
+/* ===== 开始界面 ===== */
+#start-screen {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #ff7675 100%);
+}
+.start-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.25;
+  animation: bgSlide 20s infinite alternate;
+}
+@keyframes bgSlide {
+  0% { background-image: url('../.uploads/386f7216-b23e-4bb4-8d05-8b28ffb0b1d5_春季背景图.png'); }
+  33% { background-image: url('../.uploads/bc30e759-542c-40cd-a653-74ee7ad280b2_夏季背景图.png'); }
+  66% { background-image: url('../.uploads/e0018974-9664-4694-b237-ddd431d7f9d8_秋季背景图.png'); }
+  100% { background-image: url('../.uploads/c8911682-29e7-41c7-8ade-c8d9fe84e234_冬季背景图.png'); }
+}
+.start-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 40px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 420px; width: 90%;
+  backdrop-filter: blur(10px);
+}
+.game-title {
+  font-size: 42px; font-weight: 800;
+  background: linear-gradient(90deg, #e17055, #fdcb6e, #6c5ce7, #00b894);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s ease infinite;
+  margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+@keyframes gradientMove {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.game-subtitle {
+  font-size: 15px; color: #888;
+  margin-bottom: 24px;
+}
+.season-showcase {
+  display: flex; justify-content: center; gap: 12px;
+  margin-bottom: 28px;
+}
+.season-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  opacity: 0.35; transition: all 0.4s;
+}
+.season-dot.spring { background: var(--spring); }
+.season-dot.summer { background: var(--summer); }
+.season-dot.autumn { background: var(--autumn); }
+.season-dot.winter { background: var(--winter); }
+.season-dot.active { opacity: 1; transform: scale(1.4); box-shadow: 0 0 8px currentColor; }
+
+.hint { font-size: 12px; color: #aaa; margin-top: 16px; }
+
+/* ===== 按钮 ===== */
+.btn {
+  border: none; cursor: pointer; font-family: inherit;
+  transition: all 0.2s; outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
+  color: white; font-size: 18px; font-weight: 600;
+  padding: 14px 48px; border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(255,107,107,0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,107,0.45); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-back {
+  background: rgba(255,255,255,0.85);
+  color: var(--text); font-size: 14px;
+  padding: 8px 16px; border-radius: 20px;
+}
+.btn-back:hover { background: white; }
+
+.btn-action {
+  background: white; color: var(--text);
+  font-size: 15px; padding: 12px 20px;
+  border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 6px;
+}
+.btn-action:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+
+.btn-next {
+  background: rgba(255,255,255,0.2); color: white;
+  font-size: 13px; padding: 8px 20px; border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-top: 12px;
+}
+.btn-next:hover { background: rgba(255,255,255,0.35); }
+
+.btn-big {
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  color: white; font-size: 20px; font-weight: 700;
+  padding: 16px 56px; border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0,184,148,0.35);
+  margin: 16px 0;
+}
+.btn-big:hover { transform: scale(1.05); }
+.btn-big:active { transform: scale(0.98); }
+
+.btn-text {
+  background: transparent; color: #888;
+  font-size: 14px; padding: 8px;
+}
+.btn-text:hover { color: #555; }
+
+/* ===== 游戏界面布局 ===== */
+#game-screen {
+  display: flex; flex-direction: column;
+  background: var(--bg);
+}
+
+/* 顶部栏 */
+#top-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--card);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  z-index: 10;
+}
+.season-selector { position: relative; }
+.season-badge {
+  background: var(--spring); color: white;
+  border: none; border-radius: 20px;
+  padding: 6px 14px; font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer; transition: background 0.3s;
+}
+.dropdown {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  background: white; border-radius: 12px;
+  box-shadow: var(--shadow); overflow: hidden;
+  min-width: 120px; z-index: 20;
+  animation: dropdownIn 0.2s ease;
+}
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.dropdown-item {
+  padding: 10px 14px; font-size: 14px; cursor: pointer;
+  transition: background 0.15s;
+}
+.dropdown-item:hover { background: #f5f5f5; }
+
+.player-stats { display: flex; gap: 14px; }
+.stat {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 14px; font-weight: 600;
+  background: rgba(0,0,0,0.04); padding: 4px 10px;
+  border-radius: 12px;
+}
+.stat-icon { font-size: 15px; }
+
+/* ===== 视图容器 ===== */
+.view {
+  flex: 1; position: relative;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.view.active { opacity: 1; pointer-events: auto; }
+
+/* ===== 地图视图 ===== */
+#map-view { overflow: hidden; }
+.map-container {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-bg {
+  position: absolute; inset: 0;
+  background: url('../.uploads/e9c4a7d1-adca-42fb-9ee9-236435e3da49_地图背景图.png') center/cover no-repeat;
+  transition: filter 0.6s;
+}
+.map-hint {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.6); color: white;
+  font-size: 13px; padding: 6px 16px; border-radius: 16px;
+  pointer-events: none; z-index: 5;
+}
+
+/* 店铺标记 */
+#shop-markers {
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+}
+.shop-marker {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center;
+  cursor: pointer; transition: transform 0.2s;
+  animation: float 3s ease-in-out infinite;
+}
+.shop-marker:nth-child(2n) { animation-delay: 0.5s; }
+.shop-marker:nth-child(3n) { animation-delay: 1s; }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.shop-marker:hover { transform: scale(1.15); }
+.shop-marker:active { transform: scale(0.95); }
+.marker-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: white; box-shadow: var(--shadow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 6px;
+  border: 3px solid transparent;
+  transition: border-color 0.3s;
+}
+.marker-label {
+  background: rgba(0,0,0,0.65); color: white;
+  font-size: 12px; padding: 3px 10px; border-radius: 10px;
+  white-space: nowrap; font-weight: 500;
+}
+
+/* ===== 店铺视图 ===== */
+#shop-view { overflow: hidden; }
+.shop-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: background-image 0.5s;
+}
+.shop-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+}
+.shop-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  height: 100%; padding: 16px;
+}
+.shop-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+#shop-name {
+  color: white; font-size: 22px; font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4); flex: 1;
+}
+#shop-owner {
+  color: rgba(255,255,255,0.9); font-size: 14px;
+  background: rgba(0,0,0,0.3); padding: 4px 12px;
+  border-radius: 12px;
+}
+.shop-body {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding-bottom: 40px; gap: 20px;
+}
+.owner-avatar {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 56px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  border: 4px solid white;
+}
+.shop-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===== 对话系统 ===== */
+#dialogue-box {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 100; padding: 16px;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.dialogue-panel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius);
+  padding: 20px; color: white;
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.2);
+  max-width: 600px; margin: 0 auto;
+}
+.dialogue-speaker {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px; font-weight: 700; font-size: 15px;
+}
+#speaker-avatar { font-size: 24px; }
+.dialogue-text-wrapper {
+  background: rgba(255,255,255,0.15); border-radius: 10px;
+  padding: 12px 14px; min-height: 60px;
+  position: relative;
+}
+#dialogue-text {
+  font-size: 15px; line-height: 1.7;
+  margin: 0;
+}
+.typing-cursor {
+  display: inline-block; animation: blink 1s infinite;
+  font-weight: 300;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ===== 经营小游戏 ===== */
+#minigame-overlay {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.minigame-panel {
+  background: white; border-radius: var(--radius);
+  padding: 28px; width: 90%; max-width: 380px;
+  text-align: center; box-shadow: var(--shadow);
+  animation: popIn 0.3s ease;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+#minigame-title { font-size: 20px; margin-bottom: 6px; }
+#minigame-desc { font-size: 14px; color: #888; margin-bottom: 20px; }
+.progress-container {
+  width: 100%; height: 24px; background: #eee;
+  border-radius: 12px; overflow: hidden; margin-bottom: 12px;
+}
+.progress-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #00b894, #00cec9);
+  border-radius: 12px; transition: width 0.1s linear;
+}
+.minigame-stats {
+  display: flex; justify-content: space-between;
+  font-size: 14px; color: #666; margin-bottom: 8px;
+}
+
+/* ===== 通知 ===== */
+#notification {
+  position: fixed; top: 70px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.75); color: white;
+  padding: 10px 22px; border-radius: 20px;
+  font-size: 14px; z-index: 200;
+  animation: notifIn 0.3s ease;
+}
+@keyframes notifIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 480px) {
+  .game-title { font-size: 32px; }
+  .shop-actions { flex-direction: column; width: 100%; }
+  .btn-action { width: 100%; justify-content: center; }
+  .shop-marker { transform: scale(0.85); }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>四季小镇</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 开始界面 -->
+  <div id="start-screen" class="screen active">
+    <div class="start-bg"></div>
+    <div class="start-content">
+      <h1 class="game-title">四季小镇</h1>
+      <p class="game-subtitle">探索 · 经营 · 遇见温暖的故事</p>
+      <div class="season-showcase">
+        <span class="season-dot spring active"></span>
+        <span class="season-dot summer"></span>
+        <span class="season-dot autumn"></span>
+        <span class="season-dot winter"></span>
+      </div>
+      <button id="start-btn" class="btn btn-primary">开始游戏</button>
+      <p class="hint">点击按钮进入小镇</p>
+    </div>
+  </div>
+
+  <!-- 游戏主界面 -->
+  <div id="game-screen" class="screen">
+    <!-- 顶部状态栏 -->
+    <div id="top-bar">
+      <div class="season-selector">
+        <button id="season-btn" class="season-badge">
+          <span id="season-icon">🌸</span>
+          <span id="season-name">春季</span>
+        </button>
+        <div id="season-menu" class="dropdown hidden">
+          <div class="dropdown-item" data-season="spring">🌸 春季</div>
+          <div class="dropdown-item" data-season="summer">☀️ 夏季</div>
+          <div class="dropdown-item" data-season="autumn">🍂 秋季</div>
+          <div class="dropdown-item" data-season="winter">❄️ 冬季</div>
+        </div>
+      </div>
+      <div class="player-stats">
+        <div class="stat">
+          <span class="stat-icon">💰</span>
+          <span id="gold">100</span>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">❤️</span>
+          <span id="mood">50</span>
+        </div>
+        <div class="stat">
+          <span class="stat-icon">📅</span>
+          <span id="day">第1天</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 地图视图 -->
+    <div id="map-view" class="view active">
+      <div class="map-container">
+        <div class="map-bg"></div>
+        <div id="shop-markers"></div>
+      </div>
+      <div class="map-hint">点击店铺图标进入探索</div>
+    </div>
+
+    <!-- 店铺视图 -->
+    <div id="shop-view" class="view">
+      <div class="shop-bg"></div>
+      <div class="shop-overlay"></div>
+      <div class="shop-content">
+        <div class="shop-header">
+          <button id="back-btn" class="btn btn-back">← 返回地图</button>
+          <h2 id="shop-name"></h2>
+          <span id="shop-owner"></span>
+        </div>
+        <div class="shop-body">
+          <div id="owner-avatar" class="owner-avatar"></div>
+          <div class="shop-actions">
+            <button id="chat-btn" class="btn btn-action">💬 与店主聊天</button>
+            <button id="work-btn" class="btn btn-action">🛠️ 帮忙经营</button>
+            <button id="gift-btn" class="btn btn-action">🎁 赠送礼物</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 对话系统 -->
+  <div id="dialogue-box" class="hidden">
+    <div class="dialogue-panel">
+      <div class="dialogue-speaker">
+        <span id="speaker-avatar"></span>
+        <span id="speaker-name"></span>
+      </div>
+      <div class="dialogue-text-wrapper">
+        <p id="dialogue-text"></p>
+        <span class="typing-cursor">|</span>
+      </div>
+      <button id="dialogue-next" class="btn btn-next">点击继续</button>
+    </div>
+  </div>
+
+  <!-- 经营小游戏 -->
+  <div id="minigame-overlay" class="hidden">
+    <div class="minigame-panel">
+      <h3 id="minigame-title">帮忙制作</h3>
+      <p id="minigame-desc">点击按钮完成制作！</p>
+      <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div class="minigame-stats">
+        <span>进度: <span id="progress-text">0%</span></span>
+        <span>连击: <span id="combo">0</span></span>
+      </div>
+      <button id="action-btn" class="btn btn-big">点击制作!</button>
+      <button id="close-minigame" class="btn btn-text">结束</button>
+    </div>
+  </div>
+
+  <!-- 通知提示 -->
+  <div id="notification" class="hidden">
+    <span id="notification-text"></span>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
