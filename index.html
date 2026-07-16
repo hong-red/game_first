@@ -3,127 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>四季小镇</title>
+  <title>谷子的家 — 电子吧唧收纳册</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 开始界面 -->
-  <div id="start-screen" class="screen active">
-    <div class="start-bg"></div>
-    <div class="start-content">
-      <h1 class="game-title">四季小镇</h1>
-      <p class="game-subtitle">探索 · 经营 · 遇见温暖的故事</p>
-      <div class="season-showcase">
-        <span class="season-dot spring active"></span>
-        <span class="season-dot summer"></span>
-        <span class="season-dot autumn"></span>
-        <span class="season-dot winter"></span>
-      </div>
-      <button id="start-btn" class="btn btn-primary">开始游戏</button>
-      <p class="hint">点击按钮进入小镇</p>
+  <!-- 顶部导航 -->
+  <nav id="top-nav">
+    <div class="nav-brand">🎀 谷子的家</div>
+    <div class="nav-modes">
+      <button class="mode-btn active" data-mode="album">📖 收纳册</button>
+      <button class="mode-btn" data-mode="desk">🖼️ 痛桌</button>
+      <button class="mode-btn" data-mode="desktop">🖥️ 桌面</button>
     </div>
-  </div>
+  </nav>
 
-  <!-- 游戏主界面 -->
-  <div id="game-screen" class="screen">
-    <!-- 顶部状态栏 -->
-    <div id="top-bar">
-      <div class="season-selector">
-        <button id="season-btn" class="season-badge">
-          <span id="season-icon">🌸</span>
-          <span id="season-name">春季</span>
-        </button>
-        <div id="season-menu" class="dropdown hidden">
-          <div class="dropdown-item" data-season="spring">🌸 春季</div>
-          <div class="dropdown-item" data-season="summer">☀️ 夏季</div>
-          <div class="dropdown-item" data-season="autumn">🍂 秋季</div>
-          <div class="dropdown-item" data-season="winter">❄️ 冬季</div>
+  <!-- 主内容区 -->
+  <main id="main-area">
+    <!-- 收纳册模式 -->
+    <section id="album-mode" class="mode-view active">
+      <div class="album-container">
+        <div class="book">
+          <div class="page left-page" id="left-page"></div>
+          <div class="book-spine"></div>
+          <div class="page right-page" id="right-page"></div>
+        </div>
+        <div class="album-controls">
+          <button id="prev-page" class="page-btn">◀ 上一页</button>
+          <span id="page-num">第 1 页</span>
+          <button id="next-page" class="page-btn">下一页 ▶</button>
         </div>
       </div>
-      <div class="player-stats">
-        <div class="stat">
-          <span class="stat-icon">💰</span>
-          <span id="gold">100</span>
-        </div>
-        <div class="stat">
-          <span class="stat-icon">❤️</span>
-          <span id="mood">50</span>
-        </div>
-        <div class="stat">
-          <span class="stat-icon">📅</span>
-          <span id="day">第1天</span>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- 地图视图 -->
-    <div id="map-view" class="view active">
-      <div class="map-container">
-        <div class="map-bg"></div>
-        <div id="shop-markers"></div>
-      </div>
-      <div class="map-hint">点击店铺图标进入探索</div>
-    </div>
+    <!-- 痛桌模式 -->
+    <section id="desk-mode" class="mode-view">
+      <div class="desk-bg" id="desk-bg"></div>
+      <div class="desk-surface" id="desk-surface"></div>
+      <div class="desk-hint">💡 拖拽吧唧自由摆放，双击查看详情</div>
+    </section>
 
-    <!-- 店铺视图 -->
-    <div id="shop-view" class="view">
-      <div class="shop-bg"></div>
-      <div class="shop-overlay"></div>
-      <div class="shop-content">
-        <div class="shop-header">
-          <button id="back-btn" class="btn btn-back">← 返回地图</button>
-          <h2 id="shop-name"></h2>
-          <span id="shop-owner"></span>
-        </div>
-        <div class="shop-body">
-          <div id="owner-avatar" class="owner-avatar"></div>
-          <div class="shop-actions">
-            <button id="chat-btn" class="btn btn-action">💬 与店主聊天</button>
-            <button id="work-btn" class="btn btn-action">🛠️ 帮忙经营</button>
-            <button id="gift-btn" class="btn btn-action">🎁 赠送礼物</button>
+    <!-- 桌面模式 -->
+    <section id="desktop-mode" class="mode-view">
+      <div class="wallpaper" id="wallpaper"></div>
+      <div class="widgets-layer">
+        <!-- 时钟 -->
+        <div class="widget clock-widget">
+          <div class="clock-face">
+            <div class="clock-hand hour" id="hour-hand"></div>
+            <div class="clock-hand minute" id="minute-hand"></div>
+            <div class="clock-hand second" id="second-hand"></div>
+            <div class="clock-center"></div>
           </div>
+          <div class="digital-time" id="digital-time">12:00</div>
+        </div>
+        <!-- 日历 -->
+        <div class="widget calendar-widget">
+          <div class="cal-header" id="cal-month">2026年7月</div>
+          <div class="cal-body" id="cal-body"></div>
+        </div>
+        <!-- 便签 -->
+        <div class="widget sticky-widget">
+          <div class="sticky-header">📝 便签</div>
+          <textarea class="sticky-content" placeholder="写下今天的心情..."></textarea>
+        </div>
+        <!-- 快捷链接 -->
+        <div class="widget links-widget">
+          <div class="link-item" onclick="window.open('https://www.bilibili.com','_blank')">📺 B站</div>
+          <div class="link-item" onclick="window.open('https://www.weibo.com','_blank')">📱 微博</div>
+          <div class="link-item" onclick="window.open('https://www.pixiv.net','_blank')">🎨 Pixiv</div>
+          <div class="link-item" onclick="window.open('https://github.com','_blank')">🐙 GitHub</div>
         </div>
       </div>
+      <div class="wallpaper-selector">
+        <div class="wp-thumb" data-wp="spring" style="background-image:url('assets/386f7216-b23e-4bb4-8d05-8b28ffb0b1d5_春季背景图.png')"></div>
+        <div class="wp-thumb" data-wp="summer" style="background-image:url('assets/bc30e759-542c-40cd-a653-74ee7ad280b2_夏季背景图.png')"></div>
+        <div class="wp-thumb" data-wp="autumn" style="background-image:url('assets/e0018974-9664-4694-b237-ddd431d7f9d8_秋季背景图.png')"></div>
+        <div class="wp-thumb" data-wp="winter" style="background-image:url('assets/c8911682-29e7-41c7-8ade-c8d9fe84e234_冬季背景图.png')"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 吧唧详情弹窗 -->
+  <div id="badge-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close">×</button>
+      <div class="modal-badge-large" id="modal-badge"></div>
+      <h3 id="modal-name"></h3>
+      <p id="modal-rarity"></p>
+      <p id="modal-desc"></p>
     </div>
   </div>
 
-  <!-- 对话系统 -->
-  <div id="dialogue-box" class="hidden">
-    <div class="dialogue-panel">
-      <div class="dialogue-speaker">
-        <span id="speaker-avatar"></span>
-        <span id="speaker-name"></span>
-      </div>
-      <div class="dialogue-text-wrapper">
-        <p id="dialogue-text"></p>
-        <span class="typing-cursor">|</span>
-      </div>
-      <button id="dialogue-next" class="btn btn-next">点击继续</button>
-    </div>
-  </div>
-
-  <!-- 经营小游戏 -->
-  <div id="minigame-overlay" class="hidden">
-    <div class="minigame-panel">
-      <h3 id="minigame-title">帮忙制作</h3>
-      <p id="minigame-desc">点击按钮完成制作！</p>
-      <div class="progress-container">
-        <div id="progress-bar" class="progress-bar"></div>
-      </div>
-      <div class="minigame-stats">
-        <span>进度: <span id="progress-text">0%</span></span>
-        <span>连击: <span id="combo">0</span></span>
-      </div>
-      <button id="action-btn" class="btn btn-big">点击制作!</button>
-      <button id="close-minigame" class="btn btn-text">结束</button>
-    </div>
-  </div>
-
-  <!-- 通知提示 -->
-  <div id="notification" class="hidden">
-    <span id="notification-text"></span>
-  </div>
-
-  <script src="game.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
